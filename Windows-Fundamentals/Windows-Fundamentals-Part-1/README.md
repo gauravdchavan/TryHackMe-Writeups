@@ -1,380 +1,483 @@
-Windows Fundamentals Part 1 — Documentation
-1. Introduction to Windows
-What is Windows?
-Windows is an operating system developed by Microsoft.
-It provides a graphical user interface (GUI) for interacting with the computer.
-It manages hardware, software, files, users, processes, and system resources.
-Important Windows concepts
-Operating System (OS)
-GUI
-Users and Groups
-Files and Directories
-Processes
-Services
-System Settings
-Security and Permissions
-2. Windows Editions
+# 🪟 TryHackMe — Windows Fundamentals Part 1
 
-Know the major Windows editions and their general purpose:
+> **Platform:** TryHackMe
+> **Room:** Windows Fundamentals Part 1
+> **Category:** Windows Fundamentals
+> **Difficulty:** Easy
+> **Status:** ✅ Completed
 
-Windows Home
-Windows Pro
-Windows Enterprise
-Windows Education
+---
 
-Important: Different editions provide different features, especially regarding administration, security, and enterprise management.
+## 📌 1. Room Overview
 
-3. The Windows Desktop
+This room introduces the fundamentals of the Windows operating system.
 
-Document the main components:
+It covers the Windows desktop environment, user accounts, file systems, permissions, User Account Control (UAC), Task Manager, and other basic Windows features.
 
+Understanding these fundamentals is important for cybersecurity because Windows is widely used in organizations and is frequently targeted by attackers.
+
+---
+
+## 🎯 2. Learning Objectives
+
+By completing this room, I learned:
+
+* Basic Windows desktop components
+* Windows editions
+* Start Menu and Taskbar
+* File Explorer
+* File and folder permissions
+* User accounts
+* Administrator and Standard User accounts
+* User Account Control (UAC)
+* Task Manager
+* System Information
+* Resource Monitor
+* Control Panel
+* Computer Management
+* Useful Windows Run commands
+* Important Windows keyboard shortcuts
+
+---
+
+# 🖥️ 3. Windows Desktop
+
+The Windows desktop is the main graphical interface displayed after logging into Windows.
+
+### Important components
+
+```text
 Desktop
-Start Menu
-Taskbar
-Search
-Notification Area/System Tray
-Recycle Bin
-Desktop shortcuts
-Important keyboard shortcuts
-Shortcut	Function
-Win	Open Start Menu
-Win + D	Show/Hide Desktop
-Win + E	Open File Explorer
-Win + R	Open Run
-Win + I	Open Settings
-Win + L	Lock computer
-Alt + Tab	Switch between applications
-Ctrl + Shift + Esc	Open Task Manager
-Alt + F4	Close active window
+├── Start Menu
+├── Taskbar
+├── Search
+├── Notification Area
+├── System Tray
+├── Recycle Bin
+└── Desktop Shortcuts
+```
 
-⭐ Especially remember: Ctrl + Shift + Esc → Task Manager.
+---
 
-4. Start Menu
+# 📂 4. File Explorer
 
-Understand:
+**File Explorer** is used to navigate and manage files and folders in Windows.
 
-Applications
-Search
-Settings
-Power options
-User account options
-Power options
-Shut down
-Restart
-Sleep
-5. Taskbar
+### Shortcut
 
-Important components:
+```text
+Win + E
+```
 
-Start button
-Search
-Pinned applications
-Running applications
-Notification Area
-Clock
-Network
-Volume
-Notification Area
+### Important Windows directories
 
-The notification area can contain icons such as:
+| Directory                | Description                           |
+| ------------------------ | ------------------------------------- |
+| `C:\`                    | Root directory                        |
+| `C:\Windows`             | Windows operating system files        |
+| `C:\Users`               | User profiles                         |
+| `C:\Program Files`       | Installed applications                |
+| `C:\Program Files (x86)` | 32-bit applications on 64-bit Windows |
 
-Network
-Volume
-Battery
-Security notifications
-Background applications
-6. File Explorer
+### Example
 
-File Explorer is used to manage files and folders.
+```text
+C:\Users\Username
+```
 
-Important locations
-C:\
-C:\Windows
-C:\Users
-C:\Program Files
-C:\Program Files (x86)
-Important folders
+This directory contains files and folders belonging to a particular user.
 
-C:\Users
+---
 
-Contains profiles for users on the computer.
+# 👤 5. Windows User Accounts
 
-Example:
+Windows supports different types of user accounts.
 
-C:\Users\Sunny
+### Standard User
 
-C:\Windows
+A Standard User has limited privileges and cannot normally perform operations requiring administrative privileges.
 
-Contains important Windows operating-system files.
+### Administrator
 
-C:\Program Files
+An Administrator has higher privileges and can perform administrative operations such as:
 
-Normally contains installed 64-bit applications.
+* Installing software
+* Changing system settings
+* Managing users
+* Modifying protected system files
 
-C:\Program Files (x86)
+### 🔐 Security Principle
 
-Normally contains 32-bit applications on 64-bit Windows.
+The **Principle of Least Privilege** states that users and programs should receive only the permissions they need.
 
-7. File and Folder Permissions
+```text
+More Privileges
+      ↓
+More System Control
+      ↓
+Greater Security Risk if Compromised
+```
 
-Windows uses permissions to control who can access files and folders.
+---
 
-Important permissions include:
+# 🛡️ 6. User Account Control (UAC)
 
-Read
-Write
-Modify
-Full Control
-Why permissions matter in cybersecurity
+**UAC = User Account Control**
 
-Incorrect permissions can allow unauthorized users or malicious programs to:
+UAC is a Windows security feature designed to prevent unauthorized changes to the operating system.
 
-Read sensitive files
-Modify files
-Execute programs
-Delete important data
-8. User Accounts
+When an operation requires elevated privileges, Windows can ask the user to confirm the operation.
 
-Windows has different types of users.
+### Example
 
-Standard User
-
-A standard user has limited privileges and normally cannot make major system changes.
-
-Administrator
-
-An administrator has higher privileges and can perform administrative operations.
-
-Important concept
-
-Least Privilege
-
-Users should have only the permissions required to perform their tasks.
-
-This is an extremely important cybersecurity principle.
-
-9. User Account Control (UAC)
-What is UAC?
-
-UAC = User Account Control
-
-UAC is a Windows security feature designed to prevent unauthorized changes to the system.
-
-When an operation requires elevated privileges, Windows can ask the user for confirmation.
-
-Why UAC is important
-
-Suppose malware is running under your user account.
-
-Without proper privilege separation:
-
+```text
 User
- ↓
-Malware
- ↓
-Administrative changes
+  ↓
+Program requests administrator privileges
+  ↓
+UAC Prompt
+  ↓
+User confirms
+  ↓
+Elevated privileges granted
+```
 
-With UAC:
+### Why UAC is important
 
-User
- ↓
-Program requests elevation
- ↓
-UAC prompt
- ↓
-User confirmation
- ↓
-Elevated operation
-Important point
+UAC helps reduce the impact of malware because programs do not automatically receive elevated privileges.
 
-UAC does not normally apply to the built-in local Administrator account by default.
+> ⚠️ **Important:** UAC does not apply by default to the built-in local Administrator account.
 
-⭐ Remember this for TryHackMe questions.
+---
 
-10. Task Manager
-What is Task Manager?
+# 📊 7. Task Manager
 
-Task Manager allows you to monitor and manage running processes and system resources.
+Task Manager allows users to monitor and manage running applications, processes, services, and system resources.
 
-How to open it
+### Keyboard shortcut
+
+```text
 Ctrl + Shift + Esc
-Important tabs
-Processes
-Performance
-App history
-Startup apps
-Users
-Details
-Services
-Processes
+```
 
-Shows applications and background processes currently running.
+### Important Task Manager tabs
 
-Performance
+| Tab          | Purpose                                     |
+| ------------ | ------------------------------------------- |
+| Processes    | Shows running applications and processes    |
+| Performance  | Shows CPU, RAM, Disk, Network and GPU usage |
+| App History  | Shows application resource usage            |
+| Startup Apps | Shows programs that start with Windows      |
+| Users        | Shows logged-in users                       |
+| Details      | Provides detailed process information       |
+| Services     | Shows Windows services                      |
 
-Shows resource usage such as:
+### Cybersecurity relevance
 
-CPU
-Memory
-Disk
-Network
-GPU
-Startup Apps
+Task Manager can help identify:
 
-Shows applications that start automatically when Windows starts.
+* Suspicious processes
+* High CPU usage
+* High memory usage
+* Unwanted startup applications
+* Running services
 
-Services
+---
 
-Shows Windows services running on the system.
+# ⚙️ 8. System Information
 
-11. System Information
+Windows provides **System Information** to display detailed information about the computer.
 
-Windows provides information about the computer's hardware and operating system.
+### Open using Run
 
-Useful information includes:
-
-Operating System
-Processor
-RAM
-System type
-Windows version
-Computer name
-
-You can use:
-
+```text
 Win + R
+```
 
-and run:
+Then:
 
+```text
 msinfo32
+```
 
-This opens System Information.
+### Information available
 
-12. Resource Monitor
+* Operating System
+* Processor
+* RAM
+* System type
+* Hardware information
+* Windows version
 
-Resource Monitor provides more detailed information about system resources.
+---
 
-You can monitor:
+# 📈 9. Resource Monitor
 
+Resource Monitor provides detailed information about system resource usage.
+
+It allows you to monitor:
+
+```text
 CPU
 Memory
 Disk
 Network
+```
 
-It can be useful when investigating:
+It can be useful for troubleshooting performance problems and investigating unusual resource usage.
 
-High CPU usage
-High memory usage
-Disk activity
-Network connections
-13. Control Panel
+---
 
-Control Panel is a traditional Windows interface for managing system settings.
+# ⚙️ 10. Control Panel
 
-Examples:
+**Control Panel** provides access to many Windows configuration options.
 
-User Accounts
-Programs
-Network settings
-System settings
-Windows Firewall
-Hardware settings
+Examples include:
 
-Modern Windows also provides the Settings application.
+* User Accounts
+* Programs
+* Network settings
+* System settings
+* Windows Firewall
+* Hardware configuration
 
-14. Computer Management
+Modern versions of Windows also provide the **Settings** application.
 
-Computer Management provides several administrative tools in one place.
+---
+
+# 🖥️ 11. Computer Management
+
+Computer Management is an administrative console containing several Windows management tools.
 
 Important components include:
 
+```text
 System Tools
-Event Viewer
-Shared Folders
-Local Users and Groups
-Performance
-Device Manager
-Disk Management
-Services
+├── Event Viewer
+├── Shared Folders
+├── Local Users and Groups
+├── Performance
+└── Device Manager
 
-⭐ This becomes especially useful later when learning Windows administration and cybersecurity.
+Storage
+└── Disk Management
 
-15. Run Dialog
+Services and Applications
+└── Services
+```
 
-Open with:
+### Open Computer Management
 
+```text
 Win + R
+```
 
-Useful commands:
+Then:
 
-Command	Opens
-cmd	Command Prompt
-powershell	PowerShell
-msinfo32	System Information
-taskmgr	Task Manager
-control	Control Panel
-services.msc	Services
-compmgmt.msc	Computer Management
-devmgmt.msc	Device Manager
-eventvwr.msc	Event Viewer
+```text
+compmgmt.msc
+```
 
-⭐ These are worth documenting because you'll use many of them later in cybersecurity.
+---
 
-16. Important Cybersecurity Concepts
+# ⌨️ 12. Important Windows Keyboard Shortcuts
 
-Make a separate section for these.
+| Shortcut             | Function            |
+| -------------------- | ------------------- |
+| `Win`                | Open Start Menu     |
+| `Win + D`            | Show/Hide Desktop   |
+| `Win + E`            | File Explorer       |
+| `Win + R`            | Run Dialog          |
+| `Win + I`            | Settings            |
+| `Win + L`            | Lock Windows        |
+| `Alt + Tab`          | Switch applications |
+| `Alt + F4`           | Close active window |
+| `Ctrl + Shift + Esc` | Task Manager        |
 
-Least Privilege
+### ⭐ Most Important
 
-Give users/programs only the permissions they need.
+```text
+Ctrl + Shift + Esc
+        ↓
+   Task Manager
+```
 
-Privilege Escalation
+---
 
-When a user or program gains higher privileges than originally authorized.
+# 🏃 13. Important Windows Run Commands
+
+The **Run dialog** can be opened using:
+
+```text
+Win + R
+```
+
+### Useful commands
+
+| Command        | Opens               |
+| -------------- | ------------------- |
+| `cmd`          | Command Prompt      |
+| `powershell`   | PowerShell          |
+| `taskmgr`      | Task Manager        |
+| `msinfo32`     | System Information  |
+| `control`      | Control Panel       |
+| `compmgmt.msc` | Computer Management |
+| `devmgmt.msc`  | Device Manager      |
+| `eventvwr.msc` | Event Viewer        |
+| `services.msc` | Services            |
+
+---
+
+# 🔐 14. Important Cybersecurity Concepts
+
+### Least Privilege
+
+Users and programs should have only the permissions required to perform their tasks.
+
+### Privilege Escalation
+
+Privilege escalation occurs when a user or program obtains higher privileges than originally authorized.
 
 Example:
 
+```text
 Standard User
       ↓
+Privilege Escalation
+      ↓
 Administrator
-User Account Control
+```
 
-Helps control administrative elevation.
+### UAC
 
-File Permissions
+UAC helps control when applications need elevated privileges.
 
-Control who can access or modify files.
+### File Permissions
 
-User Accounts
+Permissions determine who can read, modify, or control files and folders.
 
-Determine what actions a person can perform.
+### Processes
 
-17. Important TryHackMe Questions & Answers
+Running processes can be monitored to identify potentially suspicious activity.
 
-Keep a separate section at the end:
+### Services
 
-Question:
-What is the keyboard shortcut to open Task Manager?
+Windows services run background operations and can be important during security investigations.
 
+---
 
-Answer:
+# 📝 15. TryHackMe Questions & Answers
+
+## Question 1
+
+**What is the keyboard shortcut to open Task Manager?**
+
+### Answer
+
+```text
 Ctrl + Shift + Esc
+```
 
-Do this for every question you actually solved, rather than filling the document with answers copied from elsewhere.
+---
 
-18. What I Learned
+## Question 2
 
-At the end, write a short summary covering:
+**What does UAC stand for?**
 
-Windows desktop components
-File Explorer and important directories
-User accounts
-Administrator vs Standard User
-UAC
-Task Manager
-System Information
-Resource Monitor
-Control Panel
-Computer Management
-Windows administrative tools
-Basic Windows security concepts
+### Answer
+
+```text
+User Account Control
+```
+
+---
+
+## Question 3
+
+**Does UAC apply by default to the built-in local Administrator account?**
+
+### Answer
+
+```text
+No
+```
+
+---
+
+# 💡 16. Key Takeaways
+
+```text
+Windows Fundamentals
+        │
+        ├── Desktop
+        ├── File Explorer
+        ├── Users & Groups
+        ├── Permissions
+        ├── UAC
+        ├── Task Manager
+        ├── System Information
+        ├── Resource Monitor
+        ├── Control Panel
+        ├── Computer Management
+        └── Run Commands
+```
+
+### What I learned
+
+* How the Windows desktop is organized
+* How to navigate files and folders
+* Difference between Standard User and Administrator
+* Importance of least privilege
+* How UAC protects Windows
+* How to use Task Manager
+* How to view system information
+* How to monitor system resources
+* How to access Windows administrative tools
+* Useful Windows keyboard shortcuts and Run commands
+
+---
+
+# 🔐 17. Cybersecurity Relevance
+
+Windows Fundamentals provides the foundation required for further cybersecurity learning.
+
+These concepts will be useful when learning:
+
+```text
+Windows Fundamentals
+        ↓
+Windows Administration
+        ↓
+Active Directory
+        ↓
+Windows Security
+        ↓
+SOC / Threat Detection
+        ↓
+Windows Privilege Escalation
+        ↓
+Penetration Testing
+```
+
+Understanding users, permissions, processes, services, and administrative privileges is especially important for cybersecurity professionals.
+
+---
+
+# 📚 18. Conclusion
+
+Windows Fundamentals Part 1 provided an introduction to the Windows operating system and its basic security and administration features.
+
+The most important concepts I learned were **user accounts, permissions, least privilege, UAC, Task Manager, system information, and Windows administrative tools**.
+
+These fundamentals will serve as a foundation for more advanced Windows security and penetration-testing topics.
+
+---
+
+## ✅ Room Status
+
+```text
+Windows Fundamentals Part 1
+        ↓
+       ✅
+    COMPLETED
+```
