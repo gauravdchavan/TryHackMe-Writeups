@@ -1,1 +1,225 @@
+# 💻 TryHackMe — Computer Types
+
+> **Path:** Pre Security → Computer Fundamentals
+> **Room:** Computer Types
+> **Status:** ✅ Completed
+
+---
+
+## 🎯 Learning Objectives
+
+* Understand different types of computers.
+* Identify computers used directly and indirectly.
+* Understand **IoT** and **embedded computers**.
+* Learn why different computers are designed for different purposes.
+
+---
+
+# 🔹 Task 1 — Introduction
+
+Computers are not limited to laptops and smartphones.
+
+They are also found inside everyday devices such as:
+
+* Smart refrigerators
+* Doorbells
+* Coffee machines
+* Automatic doors
+* Other IoT devices
+
+### Key Point
+
+> A computer can exist inside a device without looking like a traditional computer.
+
+---
+
+# 🔹 Task 2 — Sophia's Summer of Hidden Computers: Month 1
+
+This section covers computers that people commonly interact with.
+
+### 💻 Laptop
+
+* Portable.
+* Battery-powered.
+* Designed for mobility.
+* Limited cooling compared with desktops.
+* Long/heavy workloads can cause performance limitations.
+
+### 🖥️ Desktop
+
+* Designed to remain in one location.
+* Uses wall power.
+* Better cooling than laptops.
+* Suitable for sustained performance.
+
+### ⚙️ Workstation
+
+* Designed for professional workloads.
+* Uses specialized components.
+* Focuses on **precision, reliability and performance**.
+* Used for tasks such as simulations and 3D modeling.
+
+### 🗄️ Server
+
+* Usually operates without a dedicated screen or keyboard.
+* Runs continuously.
+* Provides services to multiple users/computers over a network.
+* Examples: web servers, file servers and database servers.
+
+### 📌 Important Comparison
+
+| Computer    | Main Purpose                      |
+| ----------- | --------------------------------- |
+| Laptop      | Portable computing                |
+| Desktop     | Sustained performance             |
+| Workstation | Professional/precision work       |
+| Server      | Providing services over a network |
+
+### ❓ Answers
+
+**Q:** Which computer type usually runs without a dedicated screen and keyboard?
+
+**Answer:** `server`
+
+**Q:** What computer with specialized components is used for precision work?
+
+**Answer:** `workstation`
+
+---
+
+# 🔹 Task 3 — Sophia's Summer of Hidden Computers: Month 2
+
+This section introduces computers that are often hidden inside everyday devices.
+
+### 📱 Smartphone
+
+* Pocket-sized computer.
+* Provides computing, communication and internet access.
+* One of the most common personal computing devices.
+
+### 🌐 IoT Device
+
+**IoT = Internet of Things**
+
+* Devices that connect to a network.
+* Can send data or receive commands.
+* Often designed for a specific purpose.
+
+**Examples:**
+
+* Smart doorbells
+* Smart refrigerators
+* Smart lights
+
+### 🔧 Embedded Computer
+
+* Computer built inside another device.
+* Usually performs a specific task.
+* May not connect to the internet.
+* Often works silently without direct user interaction.
+
+**Examples:**
+
+* Coffee machines
+* Automatic doors
+* Washing machines
+* Cars
+
+### 🔑 IoT vs Embedded
+
+| IoT                       | Embedded                               |
+| ------------------------- | -------------------------------------- |
+| Usually network-connected | May not be network-connected           |
+| Can send/receive data     | Performs a specific internal function  |
+| Often remotely accessible | Usually operates inside another device |
+
+### ❓ Answers
+
+**Q:** What is the currently most popular pocket-sized computer?
+
+**Answer:** `smartphone`
+
+**Q:** What type of computer would you find in a coffee machine?
+
+**Answer:** `embedded computer`
+
+---
+
+# 🔹 Task 4 — Why Computers Come in Different Flavors
+
+There is **no single best computer**.
+
+Computers are designed according to their intended purpose.
+
+### ⚖️ Important Design Trade-offs
+
+**Mobility vs Performance**
+
+* Smaller portable devices are easier to carry.
+* Limited space, cooling and battery capacity can reduce sustained performance.
+
+**Reliability vs Cost**
+
+* Servers and critical systems may use redundancy.
+* Redundant components increase reliability but also increase cost.
+
+**Purpose**
+
+* Smartphones are designed for users.
+* Servers provide services.
+* IoT devices collect/send data.
+* Embedded computers perform specific functions.
+
+### 🔐 Cybersecurity Perspective
+
+Any device containing a computer and network connectivity can become a potential security entry point.
+
+Examples:
+
+* Smart devices
+* IoT sensors
+* Servers
+* Embedded systems
+
+---
+
+# 🚩 Room Flag
+
+```text
+THM{8_computer_types}
+```
+
+---
+
+# 🧠 Key Takeaways
+
+* **Laptop →** Portable computing.
+* **Desktop →** Sustained performance.
+* **Workstation →** Professional and precision workloads.
+* **Server →** Provides services to multiple users.
+* **Smartphone →** Pocket-sized computer.
+* **IoT →** Network-connected smart devices.
+* **Embedded Computer →** Computer built into another device.
+* Different computers exist because **different tasks require different designs**.
+* Computer design involves trade-offs between **mobility, performance, power, reliability and cost**.
+
+---
+
+## ⚡ Quick Revision
+
+```text
+Laptop       → Portable
+Desktop      → Fixed + sustained performance
+Workstation  → Professional + precision
+Server       → Network services
+Smartphone   → Pocket computer
+IoT           → Network-connected device
+Embedded     → Built inside another device
+```
+
+### ✅ Room Completed
+
+**TryHackMe Room:** Computer Types
+**Category:** Pre Security → Computer Fundamentals
+**Status:** Completed ✅
 
